@@ -1,3 +1,7 @@
-keystone service-create --name=keystone --type=identity --description="Keystone Identity Service"
-keystone endpoint-create --service-id=edef1c78d42941798927937d208df9ae --publicurl=http://controller:5000/v2.0 --internalurl=http://controller:5000/v2.0 \
-  --adminurl=http://controller:35357/v2.0
+keystone tenant-create --name=admin --description="Admin Tenant"
+keystone tenant-create --name=service --description="Service Tenant"
+keystone user-create --name=admin --pass=token \
+   --email=bhanoori@usc.edu
+keystone role-create --name=admin
+keystone user-role-add --user=admin --tenant=admin --role=admin
+keystone user-role-add --user=admin --tenant=admin --role=_member_
