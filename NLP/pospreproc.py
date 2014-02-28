@@ -61,17 +61,11 @@ if mode == "train"  or mode == "dev":
                 outfile.write("pw:"+pairs[i-1][0]+" pt:" + pairs[i-1][1] +" "+ "pt2:"+pairs[i-2][1]+ " ")
                 #outfile.write(pairs[i-1][0] + " ")
              
-            if mode =="train":
-                if i+1 < len(pairs):
-                    outfile.write("nw:"+pairs[i+1][0] + " ns:"+pairs[i+1][0][-3:]+"\n")
-                else:
-                    outfile.write("\n")
-                #outfile.write(pairs[i][1]+" "+pairs[i][0]+"\n")
-            else:
-                if i+1 < len(pairs):
-                    outfile.write("nw:"+pairs[i+1][0]+ " ns:"+pairs[i+1][0][-3:]+ "\n")
-                else:
-                    outfile.write("\n")
+			if i+1 < len(pairs):
+				outfile.write("nw:"+pairs[i+1][0] + " ns:"+pairs[i+1][0][-3:]+"\n")
+			else:
+				outfile.write("nw:0 ns:0\n")
+			#outfile.write(pairs[i][1]+" "+pairs[i][0]+"\n")
             
 infile.close()            
 outfile.close()

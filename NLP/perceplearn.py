@@ -133,7 +133,7 @@ def RunIterations(iterations):
             if predictedClass != actualClass:
                 updateFeatures(features, predictedClass, actualClass)
                 updates += 1
-        print "updates" + str(updates)
+        print "err" + str((float(updates)/len(inMemSet)))
         snapList.append(weightsList)
         #AccumulateSum()
         if updates == 0:
@@ -163,8 +163,8 @@ def main():
         modelFile = 'npercepmodel.ap'
     #print inMemSet[10]
     RunIterations(int(iterations))
-    #GenerateModel(modelFile, its)
-    CalculateAverageAndGenerateModel(its)
+    GenerateModel(modelFile, its)
+    #CalculateAverageAndGenerateModel(its)
     print its
 
   # Get the name from the command line, using 'World' as a fallback.
