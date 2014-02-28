@@ -85,8 +85,8 @@ def main():
     else:
         modelFile = "npercepmodel.ap"
     #print inMemSet[10]
-    #FetchDataFromModelFile(modelFile)
-    FetchData(modelFile)
+    FetchDataFromModelFile(modelFile)
+    #FetchData(modelFile)
     for line in sys.stdin:
         #try:
         #print line

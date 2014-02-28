@@ -48,7 +48,7 @@ def GenerateModel(modelFile, iterations):
     
 
 def CalculateAverageAndGenerateModel(iterations):
-    wfile = open('percepmodel_tf_test.ap', 'w')
+    wfile = open('percepmodel_tf_test1.ap', 'w')
     for iclass in classifiers:
         wfile.write(iclass + " ")
     wfile.write('\n')
