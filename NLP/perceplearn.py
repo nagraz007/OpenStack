@@ -33,6 +33,9 @@ def GenerateModel(modelFile, iterations):
 #     for iclass in classifiers:
 #         wfile.write(iclass + " ")
     #wfile.write('\n')
+    if len(snapList) != iterations:
+        print 'Fuck you'
+        sys.exit(1)
     for i in range(len(classifiers)):
         wfile.write(classifiers[i] + ' ')
         for feat in featureList:
@@ -163,6 +166,7 @@ def main():
         modelFile = 'npercepmodel.ap'
     #print inMemSet[10]
     RunIterations(int(iterations))
+    print classifiers
     GenerateModel(modelFile, its)
     #CalculateAverageAndGenerateModel(its)
     print its
