@@ -56,9 +56,29 @@ if mode == "train"  or mode == "dev":
                 isC='T'
             else:
                 isC='F'
+
+            allcap = '0'
+            digit = '0'
+            dash = '0'
+            punc = '0'
+            if re.match(r'^[A-Z]+$', pairs[i][0]):
+                allcap = '1'
+            else:
+                allcap = '0'
+            
+            if re.match(r'.*[0-9].*', pairs[i][0]):
+                digit = '1'
+            
+            if re.match(r'.*-.*', pairs[i][0]):
+                dash = '1'
+
+            if re.match(r'[.,;:?!-+\'"]', pairs[i][0]):
+                punc = '1'
                 
             if mode =="train":
-                outfile.write(pairs[i][2]+" w:"+pairs[i][0]+ " wt:"+pairs[i][1]+" C:"+isA+" ws:"+pairs[i][0][-3:]+" ")
+                outfile.write(pairs[i][2]+" w:"+pairs[i][0]+ " wt:"+pairs[i][1]+" C:"+isA+" ws:"+pairs[i][0][-3:]+ allcap" ")
+
+                #outfile.write(pairs[i][2]+" w:"+pairs[i][0]+ " wt:"+pairs[i][1]+" C:"+isA+" ws:"+pairs[i][0][-3:]+" ")
                 #outfile.write(pairs[i][2]+" w:"+pairs[i][0]+ " wt:"+pairs[i][1]+"\n")
             else:
                 outfile.write("w:"+pairs[i][0]+" wt:"+pairs[i][1]+" C:"+isA+" ws:"+pairs[i][0][-3:]+" ")
