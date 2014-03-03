@@ -1,6 +1,7 @@
 #This script does the pre processing for ner data
 
 import sys
+import re
 
 infile = ""
 outfile = ""
@@ -33,7 +34,10 @@ if mode == "train"  or mode == "dev":
         pairs =  sent.split()
         
         for i in range(0, len(pairs)):
-            pairs[i] = pairs[i].split("/")
+            #pairs[i] = pairs[i].split()
+            a = re.search("(.+)\/(.+)", pairs[i])
+            b = re.search("(.+)\/(.+)", a.group(1))
+            pairs[i] = [b.group(1), b.group(2),a.group(2)]
                        
         for i in range(0,len(pairs)):
             
@@ -57,7 +61,7 @@ if mode == "train"  or mode == "dev":
                 outfile.write(pairs[i][2]+" w:"+pairs[i][0]+ " wt:"+pairs[i][1]+" C:"+isA+" ws:"+pairs[i][0][-3:]+" ")
                 #outfile.write(pairs[i][2]+" w:"+pairs[i][0]+ " wt:"+pairs[i][1]+"\n")
             else:
-                outfile.write("? " +"w:"+pairs[i][0]+" wt:"+pairs[i][1]+" C:"+isA+" ws:"+pairs[i][0][-3:]+" ")
+                outfile.write("w:"+pairs[i][0]+" wt:"+pairs[i][1]+" C:"+isA+" ws:"+pairs[i][0][-3:]+" ")
                 evalfile.write(pairs[i][0] + "\n")
                 #outfile.write("w:"+pairs[i][0]+" wt:"+pairs[i][1]+"\n")
                 tagfile.write(pairs[i][2]+"\n")
