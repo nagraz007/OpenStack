@@ -12,12 +12,12 @@ print "Mode : ",mode
 
 if mode == "train":
     infile = open("ner.esp.train","r")
-    outfile = open("n2wner_train.tx","w")
+    outfile = open("n3wner_train.tx","w")
 elif mode == "dev":
     infile = open("ner.esp.dev","r")
-    outfile = open("n2wner_dev.tx","w")
-    tagfile = open("n2wner_devtags.tx","w")
-    evalfile = open("n2wner_evalwords.tx","w")
+    outfile = open("n3wner_dev.tx","w")
+    tagfile = open("n3wner_devtags.tx","w")
+    evalfile = open("n3wner_evalwords.tx","w")
 elif mode == "test":
     print "Test Mode"
 
@@ -76,12 +76,13 @@ if mode == "train"  or mode == "dev":
                 punc = '1'
                 
             if mode =="train":
-                outfile.write(pairs[i][2]+" w:"+pairs[i][0]+ " wt:"+pairs[i][1]+" C:"+isA+" ws:"+pairs[i][0][-3:]+ allcap" ")
+                outfile.write(pairs[i][2]+" w:"+pairs[i][0]+ " wt:"+pairs[i][1]+" C:"+isA+" ws:"+pairs[i][0][-3:]+ " allcap:"+allcap + " digit:"+digit + " dash:"+dash+ " punc:"+punc+" ")
 
                 #outfile.write(pairs[i][2]+" w:"+pairs[i][0]+ " wt:"+pairs[i][1]+" C:"+isA+" ws:"+pairs[i][0][-3:]+" ")
                 #outfile.write(pairs[i][2]+" w:"+pairs[i][0]+ " wt:"+pairs[i][1]+"\n")
             else:
-                outfile.write("w:"+pairs[i][0]+" wt:"+pairs[i][1]+" C:"+isA+" ws:"+pairs[i][0][-3:]+" ")
+                outfile.write("w:"+pairs[i][0]+ " wt:"+pairs[i][1]+" C:"+isA+" ws:"+pairs[i][0][-3:]+ " allcap:"+allcap + " digit:"+digit + " dash:"+dash+ " punc:"+punc+" ")
+                #outfile.write("w:"+pairs[i][0]+" wt:"+pairs[i][1]+" C:"+isA+" ws:"+pairs[i][0][-3:]+" ")
                 evalfile.write(pairs[i][0] + "\n")
                 #outfile.write("w:"+pairs[i][0]+" wt:"+pairs[i][1]+"\n")
                 tagfile.write(pairs[i][2]+"\n")
