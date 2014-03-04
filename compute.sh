@@ -10,8 +10,14 @@
 #serviceid=$(keystone tenant-list | awk '/ admin / {print $2}')
 #naga="asas"
 #public="http://controller:8774/v2/%\$adminid\$serviceid\"
- keystone endpoint-create \
-  --service-id=$(keystone service-list | awk '/ compute / {print $2}') \
-  --publicurl=http://controller:8774/v2/%\(tenant_id\)s \
-  --internalurl=http://controller:8774/v2/%\(tenant_id\)s \
-  --adminurl=http://controller:8774/v2/%\(tenant_id\)s
+ # keystone endpoint-create \
+  # --service-id=$(keystone service-list | awk '/ compute / {print $2}') \
+  # --publicurl=http://controller:8774/v2/%\(tenant_id\)s \
+  # --internalurl=http://controller:8774/v2/%\(tenant_id\)s \
+  # --adminurl=http://controller:8774/v2/%\(tenant_id\)s
+service nova-api restart
+service nova-cert restart
+service nova-consoleauth restart
+service nova-scheduler restart
+service nova-conductor restart
+service nova-novncproxy restart
