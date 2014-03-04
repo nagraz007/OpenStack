@@ -6,12 +6,12 @@
 #keystone user-role-add --user=nova --tenant=service --role=admin
 #keystone service-create --name=nova --type=compute \
  # --description="Nova Compute service"
-adminid=$(keystone tenant-list | awk '/ admin / {print $2}')
-serviceid=$(keystone tenant-list | awk '/ admin / {print $2}')
-naga="asas"
-public="http://controller:8774/v2/%\$adminid\$serviceid\"
-keystone endpoint-create \
+#adminid=$(keystone tenant-list | awk '/ admin / {print $2}')
+#serviceid=$(keystone tenant-list | awk '/ admin / {print $2}')
+#naga="asas"
+#public="http://controller:8774/v2/%\$adminid\$serviceid\"
+ keystone endpoint-create \
   --service-id=$(keystone service-list | awk '/ compute / {print $2}') \
-  --publicurl=$public \
-  --internalurl=$public \
-  --adminurl=$public
+  --publicurl=http://controller:8774/v2/%\(tenant_id\)s \
+  --internalurl=http://controller:8774/v2/%\(tenant_id\)s \
+  --adminurl=http://controller:8774/v2/%\(tenant_id\)s
