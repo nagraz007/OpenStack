@@ -1,0 +1,12 @@
+ssh slave1 rm -rf /home/hduser/yarn/hadoop-1.2.1/tmp/*
+ssh slave2 rm -rf /home/hduser/yarn/hadoop-1.2.1/tmp/*
+ssh slave3 rm -rf /home/hduser/yarn/hadoop-1.2.1/tmp/*
+ssh slave4 rm -rf /home/hduser/yarn/hadoop-1.2.1/tmp/*
+ssh slave5 rm -rf /home/hduser/yarn/hadoop-1.2.1/tmp/*
+ssh slave6 rm -rf /home/hduser/yarn/hadoop-1.2.1/tmp/*
+ssh slave7 rm -rf /home/hduser/yarn/hadoop-1.2.1/tmp/*
+ssh slave8 rm -rf /home/hduser/yarn/hadoop-1.2.1/tmp/*
+ssh slave9 rm -rf /home/hduser/yarn/hadoop-1.2.1/tmp/*
+ssh slave10 rm -rf /home/hduser/yarn/hadoop-1.2.1/tmp/*
+ssh slave11 rm -rf /home/hduser/yarn/hadoop-1.2.1/tmp/*
+ssh slave12 rm -rf /home/hduser/yarn/hadoop-1.2.1/tmp/*
